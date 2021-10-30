@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>TODO</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js"></script>
+</head>
+
+<body>
+  <header>
+
+    <!-- App name -->
+    <h1><i class="bi bi-clipboard-check"></i> TODO App</h1>
+    <!-- Info -->
+    <div class="info-bar">
+      <div class="info">Tasks Todo <span class="badge bg-light" id="ttasks-ttl">0</span></div>
+      <div class="info">Completed Tasks <span class="badge bg-light" id="ctasks-ttl">0</span></div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Button trigger modal -->
+    <button class="btn modalbtn" type="button" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+      <i class="bi bi-plus-square"></i>  
+      New Task
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addTaskModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">New Task</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- New task form -->
+            <form name="newtaskform">
+              <div class="mb-2">
+                <label for="task" class="form-label">Task</label>
+                <textarea id="task" name="task" class="form-control" rows="2"></textarea>
+              </div>
+              <div class="mb-2">
+                <label for="time" class="form-label">Date</label>
+                <input type="date" id="d-date" name="date" class="form-control">
+                <div class="form-text">
+                  Default: Today
+                </div>
+              </div>
+              <div>
+                <label for="priority" class="form-label">Priority</label>
+                <input type="range" name="priority" class="form-range" min="1" max="3" step="1" id="priority-range">
+                <div class="d-flex justify-content-between">
+                  <span class="text-secondary">Low</span>
+                  <span class="text-primary">Medium</span>
+                  <span class="text-danger">High</span>
+                </div>    
+              </div>
+            </form>
+            <!-- form end -->
+          </div>
+          <div class="modal-footer">
+            <button id="cancel-task" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button id="add-task" type="button" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal end -->
+
+    <!--TODOs Sections-->
+    <div class="sections">
+
+      <!--Tasks Todo -->
+      <div class="section">
+        <h3>Tasks Todo</h3>
+        <table id="todoTable" class="table">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Date</th>
+              <th>Priority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Filled with tasks in local storage -->
+          </tbody>
+        </table>
+      </div>
+
+      <!--Completed Tasks-->
+      <div class="section">
+        <h3>Completed Tasks</h3>
+        <table id="completedTable" class="table">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Completed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Filled with completed tasks in local storage -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <!--TODOs end-->
+
+    <!-- TODO Selection options modal -->
+    
+    <!-- Modal -->
+    <div class="modal fade" id="optionsModal" tabindex="-1" aria-labelledby="optionsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div id="taskTitle"></div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          
+          <div class="modal-body">
+            <button type="button" id="markDoneBtn" class="btn btn-primary" data-bs-dismiss="modal">
+              <i class="bi bi-check2-circle"></i> 
+              Mark Done
+            </button>
+            <button type="button" id="deleteTaskBtn" class="btn btn-danger" data-bs-dismiss="modal">
+              <i class="bi bi-trash"></i> 
+              Delete Task
+            </button>
+            <button type="button" id="deleteAllTasksBtn" class="btn btn-danger" data-bs-dismiss="modal">
+              <i class="bi bi-exclamation-circle"></i> 
+              Confirm Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Button trigger modal -->
+    <div class="p-3">
+      <button type="button" class="btn modalbtn" id="deleteAll" data-bs-toggle="modal" data-bs-target="#optionsModal">
+        <i class="bi bi-x"></i> Clear All
+      </button>
+    </div>
+    <!-- Modal end -->
+    </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>
